@@ -1,8 +1,6 @@
- 
-
 # Linux Shell Design - Project Description
 
-### The repository for the project is available at https://github.com/frediff/Linux-Shell
+### The project repository is available at https://github.com/frediff/Linux-Shell
 
 ## Linux-Shell 
 
