@@ -1,0 +1,15 @@
+The heuristic developed after seeing multiple processes from the top and their children count.
+The heuristic is as follows:
+    1) After seeing multiple process ids, we concluded that the malware's process id cannot be less than 5000.
+       As all processes less than 5000 are core processes of the system. (Just after booting the pc, on starting the terminal
+       the gnome-terminal has pid > 5000 each time).
+    2) We are waiting for 60 secs before running the next check to find the number of children of each of those pids > 5000
+       Moreover, the number of such trials is 8 (i.e., 8 minutes).
+    3) Finally, the bug is that pid whose total no. of children count (all the nodes apart from root node) is max and greater 
+       than 150. If no such process exists with the configuration mentioned above, then we prompt the user that there 
+       is no harmful process.
+
+The method used is as follows:
+    1) We first generated a graph of all the pids by connecting them with their parents (using std::map and vector)
+    2) Then, we ran a depth-first search in the graph to find the count of all children nodes of the given node.
+    3) We ran the above algorithm eight times, one for each trial.
